@@ -61,6 +61,18 @@ class SwitsController < ApplicationController
     end
   end
 
+  def add_sweet
+    swit = Swit.find(params[:swit_id])
+    swit.update(sweet: swit.sweet + 1)
+    redirect_to home_path
+  end
+
+  def add_sour
+    swit = Swit.find(params[:swit_id])
+    swit.update(sour: swit.sour + 1)
+    redirect_to home_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_swit

@@ -3,6 +3,8 @@ Switter::Application.routes.draw do
   resources :swits
   resources :comments
 
+  post 'sweet' => 'swits#add_sweet'
+  post 'sour' => 'swits#add_sour'
   post 'signin' => 'sessions#new'
   get 'signin' => 'sessions#new'
   post 'login' => 'sessions#create'
