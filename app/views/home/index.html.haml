@@ -1,0 +1,31 @@
+= render "includes/header"
+
+.sign_in
+
+= render "swits/form"
+
+.swit
+	- @swits.each do |swit|
+		.swit_username
+			= link_to User.find(swit.user.id).username, swits_path
+		.swit_content
+			= swit.content
+		.swit_category
+			= swit.sweet
+			= swit.sour
+		= link_to 'View Swit', swit
+
+		- if swit.user.id == session[:id]
+			= link_to 'Edit', edit_swit_path(swit)
+			= link_to 'Delete', swit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+		
+		- @comments.each do |comment|
+			.swit_comments
+			= Comment.find(swit.id).content
+		.comment
+			= form_for @comment do |f|
+				.field
+				= f.text_field :content
+				= f.hidden_field :swit_id
+				.actions
+				= f.submit 'Comment'

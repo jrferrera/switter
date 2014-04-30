@@ -1,0 +1,9 @@
+%h1 Switter
+
+.sign_up
+	- if session[:logged_in]
+		%h3 Hello
+		= session[:username]
+		= link_to "Home", home_path
+		= link_to "Sign Out", signout_path
+%hr
