@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-    @comment.add_data(session[:id], swit_id)
+    @comment.add_data(session[:id])
     respond_to do |format|
       if @comment.save
         format.html { redirect_to home_path, notice: 'Comment was successfully created.' }

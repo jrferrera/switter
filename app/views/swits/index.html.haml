@@ -2,6 +2,7 @@
 
 %table
   %tr
+    %th ID
     %th User
     %th Content
     %th Sweet
@@ -13,6 +14,7 @@
 
   - @swits.each do |swit|
     %tr
+      %td= swit.id
       %td= swit.user_id
       %td= swit.content
       %td= swit.sweet

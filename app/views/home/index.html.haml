@@ -19,13 +19,12 @@
 			= link_to 'Edit', edit_swit_path(swit)
 			= link_to 'Delete', swit, :method => :delete, :data => { :confirm => 'Are you sure?' }
 		
-		- @comments.each do |comment|
-			.swit_comments
-			= Comment.find(swit.id).content
+		- @comments.each do |swit_comment|
+			- if swit_comment.swit.id == swit.id
+				= swit_comment.content
 		.comment
 			= form_for @comment do |f|
 				.field
 				= f.text_field :content
-				= f.hidden_field :swit_id
-				.actions
+				= f.hidden_field :swit_id, value: swit.id
 				= f.submit 'Comment'
