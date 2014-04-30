@@ -64,6 +64,10 @@ class UsersController < ApplicationController
   def authenticate
   end
 
+  def change_password
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
