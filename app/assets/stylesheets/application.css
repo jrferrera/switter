@@ -19,7 +19,7 @@ body{
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
-	background-size: 100%;
+	background-size: 100% 100%;
 }
 
 #header{
@@ -80,7 +80,6 @@ body{
 /* Begin Sign Up */
 #sign_up_form_container{
 	height: 70%;
-	width: 70%;
 	margin-top: 3%;
 	margin-left: 41%;
 	text-align: center;
@@ -172,11 +171,12 @@ body{
 #type_swit_container{
 	float: left;
 	width:25%;
-	margin-top: 2%;
+	margin-top: 15%;
 	margin-left: 13%;
 	font-size: 15px;
 	border-style: dotted;
 	border-width: 5px;
+	position: fixed;
 }
 
 #type_swit_container form{
@@ -200,8 +200,8 @@ body{
 	float: left;
 	width: 43%;
 	margin-top: 2%;
-	margin-left: 5%;
-	margin-bottom: 100px;
+	margin-left: 45%;
+	margin-bottom: 50px;
 	font-size: 15px;
 }
 
