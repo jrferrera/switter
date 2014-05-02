@@ -7,7 +7,7 @@
           - @swit.errors.full_messages.each do |msg|
             %li= msg
     #swit_field
-      = f.text_area :content, placeholder: 'Type your swit =)', maxlength: 140, required: true
+      = f.text_area :content, placeholder: 'Type your swit =)', maxlength: 140, required: true, title: 'Must be 1-140 characters.'
     #counter
     .actions
       = f.submit 'Swit', class: 'button'

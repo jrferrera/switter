@@ -9,7 +9,10 @@
           - @user.errors.full_messages.each do |msg|
             %li= msg
     .field
-      = f.label :password
+      = f.label :old_password, "Old Password"
+      = f.password_field :old_password, placeholder: 'Enter your old password.', maxlength: 32, required: true
+    .field
+      = f.label :password, "New Password"
       = f.password_field :password, placeholder: 'Enter your new password.', maxlength: 32, required: true
     .field
       = f.label :password_confirmation

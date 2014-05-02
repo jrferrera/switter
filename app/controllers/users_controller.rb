@@ -19,6 +19,11 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    user = User.find_by_id(session[:id])
+
+    if user.authenticate(params[:old_password])
+      user.update(password: params[:password])
+    end
   end
 
   # POST /users

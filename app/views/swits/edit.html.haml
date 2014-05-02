@@ -1,7 +1,15 @@
-%h1 Editing swit
+%h2#edit_swit_header Edit Swit
 
-= render 'form'
-
-= link_to 'Show', @swit
-\|
-= link_to 'Back', swits_path
+#edit_swit_container
+  = form_for @swit do |f|
+    - if @swit.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@swit.errors.count, "error")} prohibited this swit from being saved:"
+        %ul
+          - @swit.errors.full_messages.each do |msg|
+            %li= msg
+    #swit_field
+      = f.text_area :content, placeholder: 'Type your swit =)', maxlength: 140, required: true, title: 'Must be 1-140 characters.'
+    #counter
+    .actions
+      = f.submit 'Edit Swit', class: 'button'

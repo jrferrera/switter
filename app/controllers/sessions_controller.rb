@@ -1,21 +1,16 @@
 class SessionsController < ApplicationController
   def new
-  	# if defined? session[:id]
-   #    redirect_to home_path
-   #  end
+    if !session[:logged_in].nil?
+      redirect_to home_path
+    end
 
   	@title = "Sign in"
   end
 
   def create
-  	# if defined? session[:id]
-   #    redirect_to home_path
-   #  end
-    
   	user = User.find_by_username(params[:username]) 
 
 	if user.nil?
-		# flash.now[:error] = "Invalid username/password."
 		@title = "Sign In"
 		render 'new'
 	else
@@ -31,6 +26,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+      session[:logged_in] = nil
   		reset_session
   		redirect_to signin_path
   end

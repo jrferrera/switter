@@ -27,12 +27,19 @@
 				- if swit.user.id == session[:id]
 					= link_to 'Edit', edit_swit_path(swit)
 					= link_to 'Delete', swit, :method => :delete, :data => { :confirm => 'Are you sure?' }
-				- @comments.each do |swit_comment|
-					- if swit_comment.swit.id == swit.id
-						= swit_comment.content
-			.comment
-				= form_for @comment do |f|
-					.field
-					= f.text_area :content, placeholder: 'Type your comment.', maxlength: 140, required: true, title: 'Must be 1-140 characters.'
-					= f.hidden_field :swit_id, value: swit.id
-					= f.submit 'Comment', class: 'small button'
+				.comments
+					- @comments.each do |swit_comment|
+						- if swit_comment.swit.id == swit.id
+							.comment
+								%strong
+									= User.find_by_id(Swit.find_by_id(swit.id).user_id).username + ":"
+								%text.comment_content
+									= swit_comment.content
+								.comment_timestamp
+									= swit_comment.created_at.strftime("%b %d, %Y  %I:%M")
+					= form_for @comment do |f|
+						.field
+						= f.text_area :content, placeholder: 'Type your comment.', maxlength: 140, required: true, title: 'Must be 1-140 characters.'
+						= f.hidden_field :swit_id, value: swit.id
+						= f.submit 'Comment', class: 'small button'
+				.view_comment_label Comments

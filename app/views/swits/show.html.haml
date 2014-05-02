@@ -1,21 +1,42 @@
-%p#notice= notice
-
-%p
-  %b User:
-  = @swit.user_id
-%p
-  %b Content:
-  = @swit.content
-%p
-  %b Sweet:
-  = @swit.sweet
-%p
-  %b Sour:
-  = @swit.sour
-%p
-  %b Tag:
-  = @swit.tag
-
-= link_to 'Edit', edit_swit_path(@swit)
-\|
-= link_to 'Back', swits_path
+%h2#view_swit_header View Swit
+#show_swit_container
+  .swit
+    .swit_username
+      = User.find(@swit.user.id).username
+    .swit_timestamp
+      = @swit.created_at.strftime("%b %d, %Y  %I:%M")
+      = puts (@swit.created_at.strftime("%H").to_i >= 12 ? "PM" : "AM")
+    .sweets_sour_tally
+      = "#{pluralize(@swit.sweet, "sweet")}"
+      = "#{pluralize(@swit.sour, "sour")}"
+    .swit_content
+      = @swit.content
+    .swit_category
+      .sweet_button
+        = form_tag sweet_path do
+          = hidden_field_tag :swit_id, @swit.id
+          = submit_tag 'Sweet', class: 'button'
+      .sour_button
+        = form_tag sour_path do
+          = hidden_field_tag :swit_id, @swit.id
+          = submit_tag 'Sour', class: 'button [secondary alert success]'
+      .user_swit_options
+        - if @swit.user.id == session[:id]
+          = link_to 'Edit', edit_swit_path(@swit)
+          = link_to 'Delete', @swit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        .comments
+          - @comments.each do |swit_comment|
+            - if swit_comment.swit.id == @swit.id
+              .comment
+                %strong
+                  = User.find_by_id(Swit.find_by_id(@swit.id).user_id).username + ":"
+                %text.comment_content
+                  = swit_comment.content
+                .comment_timestamp
+                  = swit_comment.created_at.strftime("%b %d, %Y  %I:%M")
+          = form_for @comment do |f|
+            .field
+            = f.text_area :content, placeholder: 'Type your comment.', maxlength: 140, required: true, title: 'Must be 1-140 characters.'
+            = f.hidden_field :swit_id, value: @swit.id
+            = f.submit 'Comment', class: 'small button'
+        .view_comment_label Comments

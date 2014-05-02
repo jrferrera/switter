@@ -20,7 +20,22 @@
 $(document).ready(function(){
 	var switWordLimit = 140;
 
-	$("#counter").text(switWordLimit + " remaining characters");
+	$(".comments").hide();
+
+	$(".view_comment_label").click(function(){
+		$(".comments").hide();
+		$(this).parent().children(".comments").slideToggle();
+	});
+
+	$("#swit_content").click(function (){
+		switLength = $("#swit_content").val().length;
+		$("#counter").show();
+		$("#counter").text((switWordLimit - switLength) + " remaining characters");
+	});
+
+	$("#swit_content").blur(function (){
+		$("#counter").hide();
+	});
 
 	$("#swit_content").keyup(function(){
 		switLength = $("#swit_content").val().length;
@@ -32,16 +47,6 @@ $(document).ready(function(){
 		switLength = $("#swit_content").val().length;
 		$("#counter").text((switWordLimit - switLength) + " remaining characters");
 	});
-
-	$("new_user sign_up_button").click(function(){
-
-	});
 });
 
 $(function(){ $(document).foundation(); });
-
-$("#counter").load(function(){
-	var switWordLimit = 140;
-
-	$("#counter").text(switWordLimit + " remaining characters");
-});

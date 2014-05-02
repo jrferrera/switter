@@ -5,11 +5,15 @@ class SwitsController < ApplicationController
   # GET /swits.json
   def index
     @swits = Swit.all
+    @user = User.find_by_id(session[:id])
   end
 
   # GET /swits/1
   # GET /swits/1.json
   def show
+    @user = User.find_by_id(session[:id])
+    @comments = Comment.all
+    @comment = Comment.new
   end
 
   # GET /swits/new
@@ -19,6 +23,7 @@ class SwitsController < ApplicationController
 
   # GET /swits/1/edit
   def edit
+    @user = User.find_by_id(session[:id])
   end
 
   # POST /swits
@@ -54,9 +59,10 @@ class SwitsController < ApplicationController
   # DELETE /swits/1
   # DELETE /swits/1.json
   def destroy
+    Comment.destroy_all(:swit_id => @swit.id)
     @swit.destroy
     respond_to do |format|
-      format.html { redirect_to swits_url }
+      format.html { redirect_to home_path }
       format.json { head :no_content }
     end
   end
