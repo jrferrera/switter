@@ -20,6 +20,13 @@
         = form_tag sour_path do
           = hidden_field_tag :swit_id, @swit.id
           = submit_tag 'Sour', class: 'button [secondary alert success]'
+      .tag_container
+        - tags = @swit.tag.scan(/\{.+?\}/)
+        - tags.each do |tag|
+          = form_tag tags_path do
+            .tags
+              = hidden_field_tag :tag_value, tag
+              = submit_tag tag
       .user_swit_options
         - if @swit.user.id == session[:id]
           = link_to 'Edit', edit_swit_path(@swit)

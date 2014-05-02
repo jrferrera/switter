@@ -253,6 +253,28 @@ body{
 	margin-left: 20px;
 }
 
+/* Begin Door Tag */
+.tags{
+	clear: both;
+}
+
+.tag_form{
+	clear: both;
+	margin: 10px;
+	display: inline;
+}
+
+#door_tag_header{
+	margin-top: 8%;
+	margin-left: 31%;
+}
+
+#swits_tag{
+	margin-right: 25%;
+}
+
+/* End Door Tag */
+
 .user_swit_options{
 	clear: both;
 	font-size: 12px;

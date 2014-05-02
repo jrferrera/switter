@@ -30,7 +30,15 @@ class SwitsController < ApplicationController
   # POST /swits.json
   def create
     @swit = Swit.new(swit_params)
-    @swit.add_data(session[:id], 0, 0, "default_tag")
+
+    tags = ""
+    door_tags = swit_params[:content].scan(/\{.+?\}/)
+
+    door_tags.each do |x|
+      tags = tags + x
+    end
+
+    @swit.add_data(session[:id], 0, 0, tags)
     respond_to do |format|
       if @swit.save
         format.html { redirect_to home_path }
@@ -77,6 +85,22 @@ class SwitsController < ApplicationController
     swit = Swit.find(params[:swit_id])
     swit.update(sour: swit.sour + 1)
     redirect_to home_path
+  end
+
+  def show_swit_tags
+    @comments = Comment.all
+    @comment = Comment.new
+    @user = User.find_by_id(session[:id])
+    @tag = params[:tag_value]
+
+    @swits = Array.new
+    @swits_array = Swit.all
+
+    @swits_array.each do |swit|
+      if swit.tag.include?(@tag)
+        @swits.push(swit)
+      end
+    end
   end
 
   private

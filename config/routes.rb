@@ -13,7 +13,7 @@ Switter::Application.routes.draw do
 
   get 'signout' => 'sessions#destroy'
   get 'signup' => 'users#new'
-
+  post 'tags' => 'swits#show_swit_tags'
   get 'home' => 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
