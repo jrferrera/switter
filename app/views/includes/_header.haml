@@ -1,5 +1,6 @@
 #header
-	= link_to image_tag('switter_logo.png'), home_path
+	#switter_logo
+		= link_to image_tag('switter_logo.png', id: 'switter_logo', width: '25%', height: '30%'), home_path
 	- if session[:logged_in]
 		#greeting
 			Welcome
