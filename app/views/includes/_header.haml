@@ -2,7 +2,7 @@
 	= link_to image_tag('switter_logo.png'), home_path
 	- if session[:logged_in]
 		#greeting
-			Hello
+			Welcome
 			= session[:username] + "!"
 		%ul.button-group{class: "[radius round]"}
 			%li
