@@ -14,9 +14,6 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    if defined? session[:id]
-      redirect_to home_path
-    end
     @user = User.new
   end
 
@@ -65,10 +62,6 @@ class UsersController < ApplicationController
   end
 
   def authenticate
-  end
-
-  def change_password
-
   end
 
   private

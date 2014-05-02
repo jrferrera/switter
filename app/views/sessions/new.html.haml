@@ -1,16 +1,14 @@
+%h2#sign_in_header Sign In
 
-%h1 Sign In
-
-.signin_form	
+#sign_in_form_container
 	= form_tag login_path do
-		.field
+		.small-3.columns
 			= label_tag :username
-			= text_field_tag :username
-		.field
+			= text_field_tag :username, nil, required: 'true', placeholder: 'Enter username'
 			= label_tag :password
-			= password_field_tag :password
-		.actions
-			= submit_tag 'Log In'
-
-		Not yet registered?
-		= link_to 'Sign Up', signup_path
+			= password_field_tag :password, nil, required: 'true', placeholder: 'Enter password'
+			= submit_tag 'Log In', class: 'button'
+			%br
+			%br
+			%h5 Not yet registered?
+			= link_to 'Sign Up', signup_path

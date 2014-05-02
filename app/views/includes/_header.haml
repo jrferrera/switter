@@ -1,10 +1,13 @@
-%h1 Switter
-
-.sign_up
+#header
+	= link_to image_tag('switter_logo.png'), home_path
 	- if session[:logged_in]
-		%h3 Hello
-		= session[:username]
-		= link_to "Home", home_path
-		= link_to "Change Password", edit_user_path(@user)
-		= link_to "Sign Out", signout_path
-%hr
+		#greeting
+			Hello
+			= session[:username] + "!"
+		%ul.button-group{class: "[radius round]"}
+			%li
+				%a.button.alert{class: "[secondary success]", href: home_path} Home
+			%li
+				%a.button.alert{class: "[secondary success]", href: edit_user_path(@user)} Change Password
+			%li
+				%a.button.alert{class: "[secondary success]", href: signout_path} Signout

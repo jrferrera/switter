@@ -8,6 +8,224 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *
+ *= require foundation_and_overrides
  *= require_self
  *= require_tree .
  */
+
+body{
+	background-image: url('background.png');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: 100%;
+}
+
+#header{
+	top: 0px;
+	width: 100%;
+	height: 50px;
+	background-color: Black;
+	color: White;
+	padding-top: 20px;
+}
+
+#header ul{
+	margin-left: 35%;
+}
+
+#header #greeting{
+	font-family: "Cooper Black";
+	font-size: 30px;
+	text-align: center;
+	margin-top: 20px;
+	padding-bottom: 20px;
+	color: Black;
+}
+
+/* Begin Sign In */
+#sign_in_form_container{
+	height: 70%;
+	width: 70%;
+	margin-top: 3%;
+	margin-left: 41%;
+	text-align: center;
+}
+
+#sign_in_header{
+	margin-top: 2%;
+	font-family: "Cooper Black";
+	text-align: center;
+}
+
+#sign_in_form_container .small-3.columns label{
+	color: Black;
+	font-size: 25px;
+	font-family: "Cooper Black";
+}
+
+#sign_in_form_container .small-3.columns a{
+	color: Black;
+	font-size: 17px;
+}
+
+#sign_in_form_container .small-3.columns a:hover{
+	background-color: White;
+	border-radius: 5px;
+	font-size: 19px;
+}
+
+/* End Sign In*/
+
+/* Begin Sign Up */
+#sign_up_form_container{
+	height: 70%;
+	width: 70%;
+	margin-top: 3%;
+	margin-left: 41%;
+	text-align: center;
+}
+
+#sign_up_header{
+	text-align: center;
+	font-family: "Cooper Black";
+}
+
+#sign_up_form_container form .small-3.columns label{
+	color: Black;
+	font-size: 25px;
+	font-family: "Cooper Black";
+}
+
+/* End Sign Up */
+
+/* Begin Change Password */
+
+#change_password_header{
+	clear: both;
+	margin-top: 2%;
+	margin-left: 10px;
+	font-family: "Cooper Black";
+	text-align: center;
+}
+
+#change_password_form{
+	margin-left: 37%;
+	width: 25%;
+	text-align: center;
+}
+
+.field label{
+	font-family: "Cooper Black";
+	color: Black;
+	font-size: 20px;
+	text-align: center;
+}
+
+/* End Change Password */
+
+#type_swit_container{
+	float: left;
+	width:25%;
+	margin-top: 2%;
+	margin-left: 13%;
+	font-size: 15px;
+	border-style: dotted;
+	border-width: 5px;
+}
+
+#type_swit_container form{
+	padding:15px;
+	padding-bottom: 0px;
+	color: Black;
+	font-weight: bold;
+}
+
+#type_swit_container .button{
+	width: 100%;
+}
+
+#counter{
+	margin-top: -10px;
+	padding-bottom: 10px;
+	text-align: right;
+}
+
+#swits{
+	float: left;
+	width: 43%;
+	margin-top: 2%;
+	margin-left: 5%;
+	font-size: 15px;
+}
+
+.swit{
+	border-style: dotted;
+	border-width: 5px;
+	padding:15px;
+	margin-bottom: 10px;
+	background-color: White;
+}
+
+.swit_username{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.swit_timestamp{
+	float: left;
+	padding-top: 5px;
+	font-size: 11px;
+}
+
+.sweets_sour_tally{
+	float: left;
+	padding-top: 5px;
+	margin-left: 10px;
+	font-size: 11px;
+}
+
+.swit_content{
+	clear: both;
+	width:100%;
+	padding:20px;
+	color: Black;
+	word-wrap: break-word;
+}
+
+.sweet_button .button{
+	float: left;
+}
+
+.sour_button .button{
+	float: left;
+	margin-left: 10px;
+}
+
+.sour_button{
+	margin-left: 20px;
+}
+
+.user_swit_options{
+	clear: both;
+}
+
+.comment{
+}
+
+#footer{
+	clear: both;
+	position: relative;
+	bottom: 0;
+	margin-bottom: 0;
+	width: 100%;
+	height: 50px;
+
+	font-size: 15px;
+	text-align: center;
+	color: White;
+	
+	background-color: Black;
+	padding-top: 15px;
+}

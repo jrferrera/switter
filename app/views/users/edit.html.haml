@@ -1,19 +1,18 @@
-= render 'includes/header'
+%h2#change_password_header Change Password
 
-%h1 Change Password
-
-= form_for @user do |f|
-  - if @user.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-      %ul
-        - @user.errors.full_messages.each do |msg|
-          %li= msg
-  .field
-    = f.label :password
-    = f.password_field :password
-  .field
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
-  .actions
-    = f.submit 'Change Password'
+#change_password_form
+  = form_for @user do |f|
+    - if @user.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+        %ul
+          - @user.errors.full_messages.each do |msg|
+            %li= msg
+    .field
+      = f.label :password
+      = f.password_field :password, placeholder: 'Enter your new password.', maxlength: 32, required: true
+    .field
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, placeholder: 'Re-type your new password.', maxlength: 32, required: true
+    .actions
+      = f.submit 'Change Password', class: 'button'

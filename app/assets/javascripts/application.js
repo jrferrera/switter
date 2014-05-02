@@ -10,7 +10,38 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require home
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+	var switWordLimit = 140;
+
+	$("#counter").text(switWordLimit + " remaining characters");
+
+	$("#swit_content").keyup(function(){
+		switLength = $("#swit_content").val().length;
+				
+		$("#counter").text((switWordLimit - switLength) + " remaining characters");
+	});
+
+	$("#swit_content").blur(function(){
+		switLength = $("#swit_content").val().length;
+		$("#counter").text((switWordLimit - switLength) + " remaining characters");
+	});
+
+	$("new_user sign_up_button").click(function(){
+
+	});
+});
+
+$(function(){ $(document).foundation(); });
+
+$("#counter").load(function(){
+	var switWordLimit = 140;
+
+	$("#counter").text(switWordLimit + " remaining characters");
+});

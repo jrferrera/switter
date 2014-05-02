@@ -1,11 +1,13 @@
-= form_for @swit do |f|
-  - if @swit.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@swit.errors.count, "error")} prohibited this swit from being saved:"
-      %ul
-        - @swit.errors.full_messages.each do |msg|
-          %li= msg
-  .field
-    = f.text_field :content
-  .actions
-    = f.submit 'Swit'
+#type_swit_container
+  = form_for @swit do |f|
+    - if @swit.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@swit.errors.count, "error")} prohibited this swit from being saved:"
+        %ul
+          - @swit.errors.full_messages.each do |msg|
+            %li= msg
+    #swit_field
+      = f.text_area :content, placeholder: 'Type your swit =)', maxlength: 140, required: true
+    #counter
+    .actions
+      = f.submit 'Swit', class: 'button'

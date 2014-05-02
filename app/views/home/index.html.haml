@@ -1,36 +1,38 @@
-= render "includes/header"
-
-.sign_in
-
 = render "swits/form"
+#swits
+	- @swits.reverse.each do |swit|
+		.swit
+			.swit_username
+				= User.find(swit.user.id).username
+			.swit_timestamp
+				= swit.created_at.strftime("%b %d, %Y  %I:%M")
+				= puts (swit.created_at.strftime("%H").to_i >= 12 ? "PM" : "AM")
+			.sweets_sour_tally
+				= "#{pluralize(swit.sweet, "sweet")}"
+				= "#{pluralize(swit.sour, "sour")}"
+			.swit_content
+				= swit.content
+			.swit_category
+				.sweet_button
+					= form_tag sweet_path do
+						= hidden_field_tag :swit_id, swit.id
+						= submit_tag 'Sweet', class: 'button'
+				.sour_button
+					= form_tag sour_path do
+						= hidden_field_tag :swit_id, swit.id
+						= submit_tag 'Sour', class: 'button [secondary alert success]'
+			.user_swit_options
+				= link_to 'View Swit', swit
 
-.swit
-	- @swits.each do |swit|
-		.swit_username
-			= link_to User.find(swit.user.id).username, swits_path
-		.swit_content
-			= swit.content
-		.swit_category
-			= "#{pluralize(swit.sweet, "sweet")}"
-			= form_tag sweet_path do
-				= hidden_field_tag :swit_id, swit.id
-				= submit_tag 'Sweet'
-			= "#{pluralize(swit.sour, "sour")}"
-			= form_tag sour_path do
-				= hidden_field_tag :swit_id, swit.id
-				= submit_tag 'Sour'
-		= link_to 'View Swit', swit
-
-		- if swit.user.id == session[:id]
-			= link_to 'Edit', edit_swit_path(swit)
-			= link_to 'Delete', swit, :method => :delete, :data => { :confirm => 'Are you sure?' }
-		- @comments.each do |swit_comment|
-			- if swit_comment.swit.id == swit.id
-				= swit_comment.content
-		.comment
-			= form_for @comment do |f|
-				.field
-				= f.text_field :content
-				= f.hidden_field :swit_id, value: swit.id
-				= f.submit 'Comment'
-		%hr
+				- if swit.user.id == session[:id]
+					= link_to 'Edit', edit_swit_path(swit)
+					= link_to 'Delete', swit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+				- @comments.each do |swit_comment|
+					- if swit_comment.swit.id == swit.id
+						= swit_comment.content
+			.comment
+				= form_for @comment do |f|
+					.field
+					= f.text_area :content, placeholder: 'Type your comment.', maxlength: 140, required: true, title: 'Must be 1-140 characters.'
+					= f.hidden_field :swit_id, value: swit.id
+					= f.submit 'Comment', class: 'small button'

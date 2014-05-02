@@ -1,19 +1,18 @@
-= form_for @user do |f|
-  - if @user.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
-      %ul
-        - @user.errors.full_messages.each do |msg|
-          %li= msg
+#form_container
+  = form_for @user do |f|
+    - if @user.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+        %ul
+          - @user.errors.full_messages.each do |msg|
+            %li= msg
 
-  .field
-    = f.label :username
-    = f.text_field :username
-  .field
-    = f.label :password
-    = f.password_field :password
-  .field
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
-  .actions
-    = f.submit 'Sign Up'
+    .small-3.columns
+      = f.label :username
+      = f.text_field :username, required: true, placeholder: 'Enter username', maxlength: 32, title: 'Must be 6-32 characters.'
+      = f.label :password
+      = f.password_field :password, required: true, placeholder: 'Enter password', maxlength: 32, title: 'Must be 6-32 characters.'
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, required: true, placeholder: 'Re-type password', maxlength: 32, title: 'Must be 6-32 characters and must be the same as password.'
+      .actions
+      = f.submit 'Sign Up', id: 'sign_up_button', class: 'button'

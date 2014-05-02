@@ -1,16 +1,16 @@
 class SessionsController < ApplicationController
   def new
-  	if defined? session[:id]
-      redirect_to home_path
-    end
+  	# if defined? session[:id]
+   #    redirect_to home_path
+   #  end
 
   	@title = "Sign in"
   end
 
   def create
-  	if defined? session[:id]
-      redirect_to home_path
-    end
+  	# if defined? session[:id]
+   #    redirect_to home_path
+   #  end
     
   	user = User.find_by_username(params[:username]) 
 
